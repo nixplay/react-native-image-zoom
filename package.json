@@ -2,8 +2,7 @@
   "name": "react-native-image-pan-zoom",
   "version": "2.1.12",
   "description": "react native image pan zoom",
-  "main": "built/index.js",
-  "types": "built/index.d.ts",
+  "main": "index",
   "scripts": {
     "prepare": "rm -rf built && tsc",
     "start": "tsc -w --outDir demo/built"
@@ -29,6 +28,7 @@
     "react-native": "*",
     "tslint": "^5.8.0",
     "tslint-config-prettier": "^1.13.0",
-    "typescript": "^2.9.2"
+    "typescript": "^2.9.2",
+    "flow-bin": "^0.92"
   }
 }
