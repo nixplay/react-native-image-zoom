@@ -143,10 +143,6 @@ export default class ImageViewer extends React.Component<Props, State> {
                 this.positionX = 0;
                 this.positionY = 0;
               }
-              /**
-               * Disable zoom in due to issue of x y position issue
-               * that need to solve
-               */
               // else {
               //   // 开始在位移地点缩放
               //   // 记录之前缩放比例
@@ -154,15 +150,14 @@ export default class ImageViewer extends React.Component<Props, State> {
               //   const beforeScale = this.scale;
 
               //   // 开始缩放
-              //   this.scale = 2;
+              //   this.scale = 1.8;
 
               //   // 缩放 diff
               //   const diffScale = this.scale - beforeScale;
               //   // 找到两手中心点距离页面中心的位移
               //   // 移动位置
-              //   this.positionX = ((this.props.cropWidth / 2 - this.doubleClickX) * diffScale) / this.scale;
-
-              //   this.positionY = ((this.props.cropHeight / 2 - this.doubleClickY) * diffScale) / this.scale;
+							// 	this.positionX = (((this.props.cropWidth / 2) - this.doubleClickX) * diffScale) / this.scale;
+							// 	this.positionY = (((this.props.cropHeight / 2) - (this.doubleClickY / 2)) * diffScale) / this.scale;
               // }
 
               this.imageDidMove('centerOn');
@@ -412,8 +407,9 @@ export default class ImageViewer extends React.Component<Props, State> {
               const diffScale = this.scale - beforeScale;
               // 找到两手中心点距离页面中心的位移
               // 移动位置
-              this.positionX = ((this.centerDiffX * diffScale) / this.scale) / 2;
+              this.positionX -= ((this.centerDiffX * diffScale) / this.scale) / 2;
               this.positionY = ((this.centerDiffY * diffScale) / this.scale) / 2;
+
               this.animatedPositionX.setValue(this.positionX);
               this.animatedPositionY.setValue(this.positionY);
             }
